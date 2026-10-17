@@ -1,0 +1,38 @@
+name: Fetch Booking.com photos
+on:
+  push:
+    paths: [".github/workflows/fetch-photos.yml"]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download photos
+        run: |
+          mkdir -p assets/photos
+          base="https://cf.bstatic.com/xdata/images/hotel/max1280x900"
+          n=1
+          for p in \
+            "921527513.jpg?k=a3f00e970014fe68eb9318399429e29ef96854ff271e0f515c3e9b3954ee7a96" \
+            "921527514.jpg?k=331894935a33b6df265c3e699aae1a60cca106a392cb4d077d72118a1193f5e3" \
+            "918242415.jpg?k=adcf9ed4d846c484e2f02809e2960f885a80ddfc819688b08340d63f37878c80" \
+            "918242405.jpg?k=8207f0f6cb68a3c478d052496e09270dc78cf9df5c81084c7b952e1445ca69af" \
+            "918242436.jpg?k=81187ce2b0a40d4332c7f3f38a3dce1d4aa5c2e9994a1188d88597535e8ec067" \
+            "929642297.jpg?k=194ea09b09c73c3b3a26ff792434f14dc4296d62d1a0dd026f70a28f2bb40d33" \
+            "929879180.jpg?k=cc324b394826a4175343ad3195867001149a06eb3b3acd883fb0c78a55ccfeb0" \
+            "929880572.jpg?k=68f3f26f29e645fe9dddf4caf6e97e1214452dd56cc5781ac08709c8e2a65180"
+          do
+            curl -fsSL -A "Mozilla/5.0" "$base/$p&o=" -o "assets/photos/photo-$n.jpg"
+            n=$((n+1))
+          done
+          ls -la assets/photos
+      - name: Commit photos and remove this workflow
+        run: |
+          git rm -q .github/workflows/fetch-photos.yml
+          git add assets/photos
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Add guest house photos from Booking.com listing"
+          git push
