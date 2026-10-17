@@ -11,5 +11,5 @@ window.SITE = {
   telegram: "onlyabror",               // username without @, e.g. "oasis_urgench"
   whatsapp: "",               // digits only, e.g. "998901234567"
   bookingUrl: "https://www.booking.com/hotel/uz/oasis-urgench.html",             // your Booking.com property link
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Najmiddin+Kubro+Urgench+Uzbekistan"
+  mapsUrl: "https://maps.app.goo.gl/yke1owtShx5dVLhL6"
 };
