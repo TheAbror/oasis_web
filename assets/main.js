@@ -26,6 +26,7 @@
       "contact.intro": "Свяжитесь с нами, чтобы узнать о свободных номерах или забронировать проживание.",
       "contact.company": "Компания",
       "contact.address": "Адрес",
+      "contact.official": "Юридический адрес",
       "contact.phone": "Телефон",
       "contact.email": "Эл. почта",
       "contact.map": "Открыть в Google Картах →",
@@ -55,6 +56,7 @@
       "contact.intro": "Bo‘sh xonalar haqida so‘rash yoki joy band qilish uchun biz bilan bog‘laning.",
       "contact.company": "Kompaniya",
       "contact.address": "Manzil",
+      "contact.official": "Rasmiy manzil",
       "contact.phone": "Telefon",
       "contact.email": "Elektron pochta",
       "contact.map": "Google Xaritada ochish →",
@@ -87,16 +89,13 @@
   if (saved && saved !== "en") setLang(saved);
 
   // Fill contact details from config.js and hide anything left empty.
-  var address = [
-    [site.street, site.houseNumber].filter(Boolean).join(" "),
-    site.city, site.region, site.postalCode, site.country
-  ].filter(Boolean).join(", ");
-
   document.querySelectorAll('[data-site="legalName"]').forEach(function (el) {
     if (site.legalName) el.textContent = site.legalName;
   });
-  document.querySelectorAll('[data-site="address"]').forEach(function (el) {
-    if (address) el.textContent = address;
+  ["address", "addressOfficial"].forEach(function (key) {
+    document.querySelectorAll('[data-site="' + key + '"]').forEach(function (el) {
+      if (site[key]) el.textContent = site[key];
+    });
   });
 
   var links = {

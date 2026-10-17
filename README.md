@@ -4,7 +4,7 @@ Static one-page site for the OASIS URGENCH, OK guest house, in English, Russian 
 
 ## Edit contact details
 
-Open `assets/config.js` and fill in phone, email, Telegram, WhatsApp, house number and the Booking.com link. Empty fields stay hidden on the page.
+Open `assets/config.js` and edit the address, phone, email, Telegram, WhatsApp and the Booking.com link. Empty fields stay hidden on the page.
 Keep `legalName` and the address identical to the D-U-N-S record.
 
 ## Deploy on Netlify (free)
