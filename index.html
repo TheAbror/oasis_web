@@ -2,24 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>OASIS URGENCH, OK — Family Guest House in Urgench, Uzbekistan</title>
-  <meta property="og:image" content="https://theabror.github.io/oasis_web/assets/photos/exterior.jpg">
   <meta name="description" content="OASIS URGENCH, OK is a family-run guest house on Najmiddin Kubro Street in Urgench, Khorezm Region, Uzbekistan.">
+  <meta property="og:title" content="OASIS URGENCH — Family Guest House in Urgench">
+  <meta property="og:image" content="https://theabror.github.io/oasis_web/assets/photos/exterior.jpg">
+  <meta name="theme-color" content="#0c4a45">
   <!-- Google Search Console: paste the verification meta tag on the next line if you choose the "HTML tag" method -->
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/styles.css?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="assets/styles.css?v=5">
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header" id="header">
     <div class="wrap">
       <a class="brand" href="#top"><img src="assets/favicon.svg" alt="">OASIS URGENCH</a>
       <nav class="nav">
-        <a href="#about" data-i18n="nav.about">About</a>
-        <a href="#photos" data-i18n="nav.photos">Photos</a>
-        <a href="#amenities" data-i18n="nav.amenities">Amenities</a>
-        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <div class="nav-links">
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#photos" data-i18n="nav.photos">Photos</a>
+          <a href="#amenities" data-i18n="nav.amenities">Amenities</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </div>
         <div class="lang" role="group" aria-label="Language">
           <button type="button" data-lang="en" aria-pressed="true">EN</button>
           <button type="button" data-lang="ru" aria-pressed="false">RU</button>
@@ -33,78 +40,99 @@
     <div class="hero">
       <div class="wrap">
         <p class="eyebrow" data-i18n="hero.eyebrow">Family guest house · Urgench, Uzbekistan</p>
-        <h1>OASIS URGENCH</h1>
+        <h1>OASIS<br>URGENCH</h1>
         <p class="lead" data-i18n="hero.lead">A quiet, family-run guest house in Urgench — a comfortable base for exploring Khiva and the Khorezm region.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="#" data-site-href="bookingUrl" target="_blank" rel="noopener" data-i18n="hero.book">Book on Booking.com</a>
+          <a class="btn btn-primary" href="https://www.booking.com/hotel/uz/oasis-urgench.html" data-site-href="bookingUrl" target="_blank" rel="noopener" data-i18n="hero.book">Book on Booking.com</a>
           <a class="btn btn-ghost" href="#contact" data-i18n="hero.contact">Contact us</a>
         </div>
       </div>
     </div>
 
     <section id="about">
-      <div class="wrap">
-        <h2 data-i18n="about.title">About us</h2>
-        <p class="section-intro" data-i18n="about.text">OASIS URGENCH is a small guest house run by our family. We welcome travellers to Urgench with clean, comfortable rooms and the warm hospitality Khorezm is known for. Ancient Khiva is a short drive away.</p>
+      <div class="wrap about reveal">
+        <p class="kicker" data-i18n="about.title">About us</p>
+        <p class="statement" data-i18n="about.text">OASIS URGENCH is a small guest house run by our family. We welcome travellers to Urgench with clean, comfortable rooms and the warm hospitality Khorezm is known for. Ancient Khiva is a short drive away.</p>
       </div>
     </section>
 
     <section id="photos" class="alt">
       <div class="wrap">
-        <h2 data-i18n="photos.title">Photos</h2>
-        <div class="gallery">
-          <figure><img src="assets/photos/room-triple.jpg" alt="Triple room with three single beds" loading="lazy" width="1200" height="900"><figcaption data-i18n="photos.triple">Triple room</figcaption></figure>
-          <figure><img src="assets/photos/room-twin.jpg" alt="Room with two beds and a TV" loading="lazy" width="1200" height="900"><figcaption data-i18n="photos.twin">Twin room</figcaption></figure>
-          <figure><img src="assets/photos/room-triple-2.jpg" alt="Room with three beds and a wardrobe" loading="lazy" width="1200" height="900"><figcaption data-i18n="photos.triple">Triple room</figcaption></figure>
-          <figure><img src="assets/photos/room-twin-2.jpg" alt="Bright room with two beds by the window" loading="lazy" width="1200" height="900"><figcaption data-i18n="photos.twin">Twin room</figcaption></figure>
-          <figure><img src="assets/photos/kitchen.jpg" alt="Shared kitchen with dining table" loading="lazy" width="1200" height="900"><figcaption data-i18n="photos.kitchen">Shared kitchen &amp; dining</figcaption></figure>
-          <figure><img src="assets/photos/bathroom.jpg" alt="Bathroom with shower" loading="lazy" width="1200" height="900"><figcaption data-i18n="photos.bathroom">Bathroom</figcaption></figure>
+        <div class="section-head reveal">
+          <h2 data-i18n="photos.title">Photos</h2>
+          <p class="hint" data-i18n="photos.hint">Tap a photo to enlarge</p>
+        </div>
+        <div class="gallery reveal">
+          <button type="button" class="shot"><img src="assets/photos/room-triple.jpg" alt="Triple room with three single beds" loading="lazy" width="1200" height="900"><span data-i18n="photos.triple">Triple room</span></button>
+          <button type="button" class="shot"><img src="assets/photos/room-twin.jpg" alt="Room with two beds and a TV" loading="lazy" width="1200" height="900"><span data-i18n="photos.twin">Twin room</span></button>
+          <button type="button" class="shot"><img src="assets/photos/kitchen.jpg" alt="Shared kitchen with dining table" loading="lazy" width="1200" height="900"><span data-i18n="photos.kitchen">Shared kitchen &amp; dining</span></button>
+          <button type="button" class="shot"><img src="assets/photos/room-triple-2.jpg" alt="Room with three beds and a wardrobe" loading="lazy" width="1200" height="900"><span data-i18n="photos.triple">Triple room</span></button>
+          <button type="button" class="shot"><img src="assets/photos/room-twin-2.jpg" alt="Bright room with two beds by the window" loading="lazy" width="1200" height="900"><span data-i18n="photos.twin">Twin room</span></button>
+          <button type="button" class="shot"><img src="assets/photos/bathroom.jpg" alt="Bathroom with shower" loading="lazy" width="1200" height="900"><span data-i18n="photos.bathroom">Bathroom</span></button>
         </div>
       </div>
     </section>
 
     <section id="amenities">
       <div class="wrap">
-        <h2 data-i18n="amenities.title">What we offer</h2>
-        <p class="section-intro" data-i18n="amenities.intro">Everything you need for a relaxed stay.</p>
-        <div class="grid">
-          <div class="card">
-            <div class="icon" aria-hidden="true">🛏️</div>
+        <div class="section-head reveal">
+          <h2 data-i18n="amenities.title">What we offer</h2>
+          <p class="hint" data-i18n="amenities.intro">Everything you need for a relaxed stay.</p>
+        </div>
+        <div class="features reveal">
+          <div class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M3 18v2M21 18v2M6 10V7a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3M12 10V7a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg>
             <h3 data-i18n="amenities.rooms.t">Comfortable rooms</h3>
-            <p data-i18n="amenities.rooms.d">Clean, quiet air-conditioned rooms with free Wi-Fi, for families, couples and solo travellers.</p>
+            <p data-i18n="amenities.rooms.d">Clean, quiet rooms for families, couples and solo travellers.</p>
           </div>
-          <div class="card">
-            <div class="icon" aria-hidden="true">🤝</div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a14 14 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1"/></svg>
+            <h3 data-i18n="amenities.wifi.t">Free Wi-Fi</h3>
+            <p data-i18n="amenities.wifi.d">Stay connected throughout your trip.</p>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M4.9 6l14.2 12M19.1 6 4.9 18M9 3l3 3 3-3M9 21l3-3 3 3"/></svg>
+            <h3 data-i18n="amenities.ac.t">Air conditioning</h3>
+            <p data-i18n="amenities.ac.d">Cool rooms in the Khorezm summer heat.</p>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v7a3 3 0 0 0 3 3v8M7 3v6M10 3v7a3 3 0 0 1-3 3M17 21V3c-2 1-3 4-3 7v4h3"/></svg>
+            <h3 data-i18n="amenities.kitchen.t">Shared kitchen</h3>
+            <p data-i18n="amenities.kitchen.d">A fully equipped kitchen and dining area for guests.</p>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>
             <h3 data-i18n="amenities.host.t">Family hospitality</h3>
             <p data-i18n="amenities.host.d">We are happy to help with directions, local tips and travel plans.</p>
           </div>
-          <div class="card">
-            <div class="icon" aria-hidden="true">🏛️</div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
             <h3 data-i18n="amenities.location.t">Convenient location</h3>
             <p data-i18n="amenities.location.d">In Urgench, close to the road to Khiva and its historic Itchan Kala.</p>
-          </div>
-          <div class="card">
-            <div class="icon" aria-hidden="true">📅</div>
-            <h3 data-i18n="amenities.booking.t">Easy booking</h3>
-            <p data-i18n="amenities.booking.d">Book online via Booking.com or contact us directly.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="alt">
       <div class="wrap">
-        <h2 data-i18n="contact.title">Contact &amp; location</h2>
-        <p class="section-intro" data-i18n="contact.intro">Get in touch to ask about availability or to arrange your stay.</p>
-        <div class="contact">
-          <div class="card">
+        <div class="section-head reveal">
+          <h2 data-i18n="contact.title">Contact &amp; location</h2>
+          <p class="hint" data-i18n="contact.intro">Get in touch to ask about availability or to arrange your stay.</p>
+        </div>
+        <div class="contact reveal">
+          <div class="contact-card">
+            <div class="quick">
+              <a class="pill" href="tel:+998914309084" data-site-href="phoneLink">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+                <span data-i18n="bar.call">Call</span>
+              </a>
+              <a class="pill" href="https://t.me/onlyabror" data-site-href="telegramLink" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 3-20 8 7 2.5M22 3l-4 18-9-7.5M22 3 9 13.5V20l3.5-3.5"/></svg>
+                <span>Telegram</span>
+              </a>
+            </div>
             <dl>
-              <dt data-i18n="contact.company">Company</dt>
-              <dd data-site="legalName">OASIS URGENCH, OK</dd>
-              <dt data-i18n="contact.address">Address</dt>
-              <dd data-site="address">Najmiddin Kubro Street, 12th lane (12 tor ko'chasi), house 26, Yangihayot MFY, Urgench, Khorezm Region, Uzbekistan</dd>
-              <dt data-i18n="contact.official">Registered address</dt>
-              <dd data-site="addressOfficial">XORAZM VILOYATI, URGANCH SHAHRI, YANGIHAYOT MFY, NAJMIDDIN KUBRO KO'CHASI, 12 TOR KO'CHASI, 26-UY</dd>
               <dt data-i18n="contact.phone" data-site-row="phone">Phone</dt>
               <dd data-site-row="phone"><a data-site-link="phone"></a></dd>
               <dt data-i18n="contact.email" data-site-row="email">Email</dt>
@@ -113,10 +141,17 @@
               <dd data-site-row="telegram"><a data-site-link="telegram" target="_blank" rel="noopener"></a></dd>
               <dt data-site-row="whatsapp">WhatsApp</dt>
               <dd data-site-row="whatsapp"><a data-site-link="whatsapp" target="_blank" rel="noopener"></a></dd>
+              <dt data-i18n="contact.address">Address</dt>
+              <dd data-site="address">Najmiddin Kubro Street, 12th lane (12 tor ko'chasi), house 26, Yangihayot MFY, Urgench, Khorezm Region, Uzbekistan</dd>
+              <dt data-i18n="contact.company">Company</dt>
+              <dd data-site="legalName">OASIS URGENCH, OK</dd>
+              <dt data-i18n="contact.official">Registered address</dt>
+              <dd class="small" data-site="addressOfficial">XORAZM VILOYATI, URGANCH SHAHRI, YANGIHAYOT MFY, NAJMIDDIN KUBRO KO'CHASI, 12 TOR KO'CHASI, 26-UY</dd>
             </dl>
           </div>
-          <div class="card map-card">
-            <a href="https://maps.app.goo.gl/yke1owtShx5dVLhL6" data-site-href="mapsUrl" target="_blank" rel="noopener" data-i18n="contact.map">Open in Google Maps →</a>
+          <div class="map">
+            <iframe title="Map: Hotel OASIS Urgench" src="https://maps.google.com/maps?q=41.5449285,60.6615636&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <a class="btn btn-dark" href="https://maps.app.goo.gl/yke1owtShx5dVLhL6" data-site-href="mapsUrl" target="_blank" rel="noopener" data-i18n="contact.map">Open in Google Maps →</a>
           </div>
         </div>
       </div>
@@ -130,7 +165,21 @@
     </div>
   </footer>
 
-  <script src="assets/config.js?v=3"></script>
-  <script src="assets/main.js?v=3"></script>
+  <nav class="action-bar" aria-label="Quick actions">
+    <a href="tel:+998914309084" data-site-href="phoneLink" data-i18n="bar.call">Call</a>
+    <a href="https://t.me/onlyabror" data-site-href="telegramLink" target="_blank" rel="noopener">Telegram</a>
+    <a class="primary" href="https://www.booking.com/hotel/uz/oasis-urgench.html" data-site-href="bookingUrl" target="_blank" rel="noopener" data-i18n="bar.book">Book</a>
+  </nav>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+    <img alt="">
+    <p class="lb-caption"></p>
+    <button type="button" class="lb-btn lb-close" aria-label="Close">×</button>
+    <button type="button" class="lb-btn lb-prev" aria-label="Previous photo">‹</button>
+    <button type="button" class="lb-btn lb-next" aria-label="Next photo">›</button>
+  </dialog>
+
+  <script src="assets/config.js?v=5"></script>
+  <script src="assets/main.js?v=5"></script>
 </body>
 </html>

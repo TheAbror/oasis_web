@@ -1,12 +1,21 @@
 (function () {
+  document.documentElement.classList.add("js");
   var site = window.SITE || {};
 
   var I18N = {
     ru: {
       "nav.about": "О нас",
+      "bar.call": "Позвонить",
+      "bar.book": "Бронь",
       "nav.photos": "Фото",
       "photos.title": "Фотографии",
-      "photos.exterior": "Наш гостевой дом",
+      "photos.hint": "Нажмите на фото, чтобы увеличить",
+      "amenities.wifi.t": "Бесплатный Wi-Fi",
+      "amenities.wifi.d": "Оставайтесь на связи во время поездки.",
+      "amenities.ac.t": "Кондиционер",
+      "amenities.ac.d": "Прохлада в номерах даже в хорезмскую жару.",
+      "amenities.kitchen.t": "Общая кухня",
+      "amenities.kitchen.d": "Полностью оборудованная кухня и столовая для гостей.",
       "photos.triple": "Трёхместный номер",
       "photos.twin": "Двухместный номер",
       "photos.kitchen": "Общая кухня и столовая",
@@ -22,7 +31,7 @@
       "amenities.title": "Что мы предлагаем",
       "amenities.intro": "Всё необходимое для спокойного отдыха.",
       "amenities.rooms.t": "Уютные номера",
-      "amenities.rooms.d": "Чистые тихие номера с кондиционером и бесплатным Wi-Fi для семей, пар и путешественников.",
+      "amenities.rooms.d": "Чистые тихие номера для семей, пар и путешественников.",
       "amenities.host.t": "Семейное гостеприимство",
       "amenities.host.d": "Подскажем дорогу, поделимся советами и поможем спланировать поездку.",
       "amenities.location.t": "Удобное расположение",
@@ -41,9 +50,17 @@
     },
     uz: {
       "nav.about": "Biz haqimizda",
+      "bar.call": "Qo‘ng‘iroq",
+      "bar.book": "Band qilish",
       "nav.photos": "Rasmlar",
       "photos.title": "Rasmlar",
-      "photos.exterior": "Mehmon uyimiz",
+      "photos.hint": "Kattalashtirish uchun rasmni bosing",
+      "amenities.wifi.t": "Bepul Wi-Fi",
+      "amenities.wifi.d": "Sayohatingiz davomida doim aloqada bo‘ling.",
+      "amenities.ac.t": "Konditsioner",
+      "amenities.ac.d": "Xorazm yozgi jaziramasida ham salqin xonalar.",
+      "amenities.kitchen.t": "Umumiy oshxona",
+      "amenities.kitchen.d": "Mehmonlar uchun to‘liq jihozlangan oshxona va ovqatlanish joyi.",
       "photos.triple": "Uch kishilik xona",
       "photos.twin": "Ikki kishilik xona",
       "photos.kitchen": "Umumiy oshxona va ovqatlanish joyi",
@@ -59,7 +76,7 @@
       "amenities.title": "Biz taklif qilamiz",
       "amenities.intro": "Xotirjam dam olish uchun kerakli hamma narsa.",
       "amenities.rooms.t": "Shinam xonalar",
-      "amenities.rooms.d": "Oilalar, juftliklar va yolg‘iz sayohatchilar uchun konditsionerli, bepul Wi-Fi bilan toza, sokin xonalar.",
+      "amenities.rooms.d": "Oilalar, juftliklar va yolg‘iz sayohatchilar uchun toza, sokin xonalar.",
       "amenities.host.t": "Oilaviy mehmondo‘stlik",
       "amenities.host.d": "Yo‘l ko‘rsatamiz, maslahat beramiz va sayohatingizni rejalashtirishga yordam beramiz.",
       "amenities.location.t": "Qulay joylashuv",
@@ -129,6 +146,9 @@
     });
   });
 
+  site.phoneLink = links.phone && links.phone.href;
+  site.telegramLink = links.telegram && links.telegram.href;
+
   document.querySelectorAll("[data-site-href]").forEach(function (a) {
     var url = site[a.dataset.siteHref];
     if (url) a.href = url; else a.hidden = true;
@@ -137,4 +157,67 @@
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });
+  // Header: transparent over the hero, solid once the page scrolls.
+  var header = document.getElementById("header");
+  var hero = document.querySelector(".hero");
+  function updateHeader() {
+    var solid = !hero || window.scrollY > hero.offsetHeight - header.offsetHeight - 40;
+    header.classList.toggle("solid", solid);
+  }
+  if (header) {
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    window.addEventListener("resize", updateHeader);
+  }
+
+  // Fade sections in as they scroll into view.
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -10% 0px" });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  // Photo viewer.
+  var box = document.getElementById("lightbox");
+  var shots = Array.prototype.slice.call(document.querySelectorAll(".shot"));
+  if (box && box.showModal && shots.length) {
+    var boxImg = box.querySelector("img");
+    var boxCaption = box.querySelector(".lb-caption");
+    var current = 0;
+
+    function show(i) {
+      current = (i + shots.length) % shots.length;
+      var img = shots[current].querySelector("img");
+      boxImg.src = img.src;
+      boxImg.alt = img.alt;
+      boxCaption.textContent = shots[current].querySelector("span").textContent + " · " + (current + 1) + "/" + shots.length;
+    }
+
+    shots.forEach(function (shot, i) {
+      shot.addEventListener("click", function () { show(i); box.showModal(); });
+    });
+    box.querySelector(".lb-close").addEventListener("click", function () { box.close(); });
+    box.querySelector(".lb-prev").addEventListener("click", function () { show(current - 1); });
+    box.querySelector(".lb-next").addEventListener("click", function () { show(current + 1); });
+    box.addEventListener("click", function (e) { if (e.target === box) box.close(); });
+    box.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") show(current - 1);
+      if (e.key === "ArrowRight") show(current + 1);
+    });
+
+    var startX = null;
+    box.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener("touchend", function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+      startX = null;
+    });
+  }
 })();
